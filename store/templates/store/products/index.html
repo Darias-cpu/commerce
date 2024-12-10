@@ -1,0 +1,38 @@
+{% extends 'store/layout/main.html' %}
+
+{% block content %}
+ <div class="py-3 bg-primary">
+    <div class="container">
+        <a class="text-white" href="{% url 'home' %}">Home/</a>
+        <a class="text-white" href="{% url 'collections' %}">Collections/</a>
+        <a class="text-white" href="{% url 'collectionsview' category_name.slug %}">{{ category_name }}</a>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ category_name.name }}</h1>
+            <hr>
+            <div class="row">
+            {% for item in products %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <a href="{% url 'productview' item.category.slug item.slug %}">
+                         <div class="card-body">
+                            <div class="Category-image">
+                                 <img src="{{ item.product_image.url }}" alt="product image" class="w-100" height="150">
+                            </div>
+                            <h4 class="text-center">{{ item.name }}</h4>
+                            <span class="float-start" style="font-weight:bolder ">from.ksh.{{ item.original_price | stringformat:'d' }}</span>
+                            <span class="float-end" style="font-weight:bolder ">To.ksh{{ item.selling_price | stringformat:'d' }}</span>
+                         </div>
+                        </a>
+                    </div>
+                </div>
+           {% endfor category %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

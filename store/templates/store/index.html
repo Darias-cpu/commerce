@@ -1,0 +1,67 @@
+{% extends 'store/layout/main.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100vh;
+            background-color: #007bff; /* Blue background color */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('{% static "images/laptops.jpg.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .banner h1 {
+            font-size: 3rem;  /* Adjust size as needed */
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .banner p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .banner .cta-button {
+            background-color: #4ac1f7;
+            color: white;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .banner .cta-button:hover {
+            background-color: #3381c1;
+        }
+    </style>
+
+    <div class="banner">
+        <div>
+            <h1>Welcome to Our Online Store!</h1>
+            <p>Explore a wide range of top-quality electronics at unbeatable prices. From the latest smartphones to high-end laptops, we have everything you need. Shop now and enjoy exclusive offers!</p>
+            <a href="{% url 'collections' %}" class="cta-button">Start Shopping</a>
+        </div>
+    </div>
+
+{% endblock content %}
